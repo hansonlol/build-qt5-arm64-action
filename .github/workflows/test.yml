@@ -9,3 +9,5 @@ jobs:
       
       - name: Test build qt5
         uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

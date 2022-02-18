@@ -7,6 +7,9 @@ inputs:
   openssl_ver:
     description: 'Version of openssl to install'
     default: '1.1.1m'
+  token:
+    description: 'Github token'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -76,7 +79,7 @@ runs:
       with:
         tag_name: latest
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.token }}
 
     - name: Publish GitHub Release
       uses: ncipollo/release-action@v1.8.6
@@ -84,7 +87,7 @@ runs:
         prerelease: false
         artifacts: "upload/lib_arm64.zip"
         tag: "latest"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ inputs.token }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
