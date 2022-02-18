@@ -32,7 +32,7 @@ runs:
         curl -L https://gist.githubusercontent.com/R0GERIUS/a2d62e21995e732b9fe510efce71965d/raw/26e9f02b88d6eb41b3a6b636248d6290094ecdc9/qt5_xcode13.patch -o $GITHUB_WORKSPACE/qt5_xcode13.patch
         git clone https://code.qt.io/qt/qt5.git $GITHUB_WORKSPACE/qt5
         cd $GITHUB_WORKSPACE/qt5
-        git checkout "${{ inputs.version }}."
+        git checkout "${{ inputs.version }}"
         perl init-repository --module-subset=qtbase,qtmacextras,qtsvg,qttools,qttranslations
         git apply --whitespace=nowarn $GITHUB_WORKSPACE/qt5_xcode13.patch
         cd -
