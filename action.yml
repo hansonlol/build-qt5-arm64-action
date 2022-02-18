@@ -30,6 +30,7 @@ runs:
         lipo -create "$GITHUB_WORKSPACE/openssl-$openssl_ver/lib-x86_64/lib/libssl.a" "$GITHUB_WORKSPACE/openssl-$openssl_ver/lib-arm64/lib/libssl.a" -output "$GITHUB_WORKSPACE/openssl-$openssl_ver-universal/lib/libssl.a"
 
         echo "openssl_root=$GITHUB_WORKSPACE/openssl-$openssl_ver-universal" >> $GITHUB_ENV
+      shell: bash
     - run: |
         function build_qt5_arch()
         {
