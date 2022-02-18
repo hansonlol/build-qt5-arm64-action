@@ -5,5 +5,5 @@ jobs:
   test:
     runs-on: macos-latest
   steps:
-      - name: Checkout repository
-        uses: ./
+    - name: Checkout repository
+      uses: ./
