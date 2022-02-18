@@ -38,12 +38,12 @@ runs:
         cd -
         build_qt5_arch arm64
       shell: bash
-    - id: Prepare build artifacts
+    - name: Prepare build artifacts
       run: |
         mkdir upload
         mv ${{ env.GITHUB_WORKSPACE }}/lib_arm64 upload
       shell: bash
-    - id: Upload build artifacts
+    - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Qt-CI_macOS_${{ inputs.version }}_arm64
