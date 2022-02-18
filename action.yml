@@ -69,7 +69,23 @@ runs:
       run: |
         mkdir upload
         mv $GITHUB_WORKSPACE/lib_arm64 upload
+        zip -r upload/lib_arm64.zip upload/lib_arm64
       shell: bash
+    - name: Delete Old Release
+      uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      with:
+        tag_name: latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Publish GitHub Release
+      uses: ncipollo/release-action@v1.8.6
+      with:
+        prerelease: false
+        artifacts: "upload/lib_arm64.zip"
+        tag: "latest"
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
