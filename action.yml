@@ -14,10 +14,10 @@ runs:
   using: "composite"
   steps:
     - name: Setup ccache
-        uses: Chocobo1/setup-ccache-action@v1
-        with:
-          update_packager_index: false
-          
+      uses: Chocobo1/setup-ccache-action@v1
+      with:
+        update_packager_index: false
+
     - name: Install OpenSSL-Universal
       run: |
         function build_openssl_arch()
