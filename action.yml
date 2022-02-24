@@ -72,7 +72,7 @@ runs:
       run: |
         mkdir upload
         mv $GITHUB_WORKSPACE/lib_arm64 upload
-        zip -r upload/lib_arm64.zip upload/lib_arm64
+        cd upload && zip -r lib_arm64.zip lib_arm64
       shell: bash
     - name: Delete Old Release
       uses: dev-drprasad/delete-tag-and-release@v0.2.0
